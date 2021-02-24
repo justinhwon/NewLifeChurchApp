@@ -109,6 +109,28 @@ function AnnouncementsScreen({ navigation }) {
   );
 }
 
+function Registration({ navigation }) {
+  return (
+    <WebView source={{ uri: 'https://new-life-service-registration.web.app/app-registration.html' }} />
+  );
+}
+
+function RegistrationScreen({ navigation }) {
+  return (
+    <Stack.Navigator>
+        <Stack.Screen name="Registration" component={Registration} options={{ title: 'Service Registration', headerLeftContainerStyle: {marginLeft: 8}, headerLeft: () => (
+          <Ionicons.Button
+            name="menu-sharp"
+            size={26}
+            onPress={() => navigation.openDrawer()}
+            backgroundColor="#808080"
+            iconStyle={{ marginLeft:2, marginRight: 2}}
+          />
+          ), }} />
+    </Stack.Navigator>
+  );
+}
+
 function Events({ navigation }) {
   return (
     <WebView source={{ uri: 'https://www.newlifechurchfremont.org/events' }} />
@@ -218,6 +240,16 @@ export default function App() {
           drawerIcon: ({focused, size}) => (
             <AntDesign
               name="notification"
+              size={size}
+              color={focused ? '#7cc' : '#ccc'}
+            />
+          ),
+        }}/>
+        <Drawer.Screen name="Registration" component={RegistrationScreen} options={{
+          title: 'Registration',
+          drawerIcon: ({focused, size}) => (
+            <FontAwesome5
+              name="file-signature"
               size={size}
               color={focused ? '#7cc' : '#ccc'}
             />
